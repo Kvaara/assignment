@@ -5,8 +5,13 @@ const path = require("path");
 
 const port = 3000;
 
+// Without this, frontend would not work properly with NodeJS backend because of CORS issues.
 app.use(cors());
+
+// Using the express.json middleware helps us to parse JSON while only looking at the Content-Type: Application/json headers.
 app.use(express.json());
+
+// Assigning a static path will ease the development experience a bit.
 app.use(express.static(path.resolve(__dirname, "client")));
 
 app.get("/", (req, res) => {
@@ -63,9 +68,12 @@ sumAllNumbersTogether = (numbers) => {
 
 calcIsNumberPrime = (number) => {
   let isNumberPrime = true;
+
+  // 1 is always not prime and is an exception to the formula.
   if (number === 1) {
     isNumberPrime = false;
   } else if (number > 1) {
+    // Main formula for calculating prime numbers
     for (let i = 2; i < number; i++) {
       if (number % i == 0) {
         isNumberPrime = false;
@@ -73,12 +81,14 @@ calcIsNumberPrime = (number) => {
       }
     }
   } else {
+    // 0 and negative numbers will always be non-prime.
     isNumberPrime = false;
   }
 
   return isNumberPrime;
 };
 
+// Without this the server would not listen to requests and it wouldn't be up-and-running.
 app.listen(port, () => {
   console.log("Server is up an running on port:", port);
   console.log(`You can visit it here: http://localhost:${port}`);
