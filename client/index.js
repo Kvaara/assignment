@@ -1,3 +1,5 @@
+import styles from "./index.css";
+
 import { createApp } from "petite-vue";
 
 createApp({

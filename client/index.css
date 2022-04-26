@@ -2,9 +2,11 @@
     box-sizing: border-box !important;
     font-family: 'Poppins', sans-serif;
 }
+
 [v-cloak] {
     display: none !important;
 }
+
 .lds-roller {
     display: inline-block;
     position: relative;
