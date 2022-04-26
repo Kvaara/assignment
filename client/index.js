@@ -92,8 +92,7 @@ createApp({
   },
 
   clearCurrentSelectViewInputs() {
-    const isSumOfTwoSelected = this.selectedIdx == 0;
-    if (isSumOfTwoSelected) {
+    if (this.isSumOfTwoSelected) {
       this.firstNumber = "";
       this.secondNumber = "";
     } else {
