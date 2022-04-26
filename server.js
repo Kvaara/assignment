@@ -81,4 +81,5 @@ calcIsNumberPrime = (number) => {
 
 app.listen(port, () => {
   console.log("Server is up an running on port:", port);
+  console.log(`You can visit it here: http://localhost:${port}`);
 });
