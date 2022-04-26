@@ -5,7 +5,7 @@ import { createApp } from "petite-vue";
 createApp({
   selectedIdx: 0,
 
-  number: null,
+  numberTotal: null,
   isNumberPrime: null,
 
   isResult: null,
@@ -22,13 +22,21 @@ createApp({
     const isSumOfTwoSelected = this.selectedIdx == 0;
 
     if (isSumOfTwoSelected) {
-      const isFirstNumberFilled = this.firstNumber || this.firstNumber === 0;
-      const isSecondNumberFilled = this.secondNumber || this.secondNumber === 0;
-      return isFirstNumberFilled && isSecondNumberFilled;
+      return this.isFirstAndSecondNumbersFilled;
     } else {
-      const isSingleNumberFilled = this.singleNumber || this.singleNumber === 0;
-      return isSingleNumberFilled;
+      return this.isSingleNumberFilled;
     }
+  },
+
+  get isFirstAndSecondNumbersFilled() {
+    const isFirstNumberFilled = this.firstNumber || this.firstNumber === 0;
+    const isSecondNumberFilled = this.secondNumber || this.secondNumber === 0;
+    return isFirstNumberFilled && isSecondNumberFilled;
+  },
+
+  get isSingleNumberFilled() {
+    const isSingleNumberFilled = this.singleNumber || this.singleNumber === 0;
+    return isSingleNumberFilled;
   },
 
   get isAtLeastOneInputFilled() {
@@ -64,7 +72,7 @@ createApp({
       });
       const result = await response.json();
       this.isNumberPrime = result.isPrime;
-      this.number = result.total;
+      this.numberTotal = result.total;
       this.isResult = true;
     } catch (err) {
       this.noErrors = false;
