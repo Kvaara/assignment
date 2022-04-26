@@ -5,9 +5,9 @@ const path = require("path");
 
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, "client")));
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.resolve(__dirname, "client")));
 
 app.get("/", (req, res) => {
   res.render("index");
