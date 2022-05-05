@@ -1,4 +1,4 @@
-# assignment
+# The assignment
 
 What is required for getting this to work on your computer?
 * NodeJS - https://nodejs.org/en/download/
